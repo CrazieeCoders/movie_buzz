@@ -6,7 +6,7 @@ import 'package:movie_buzz/data/API_service.dart';
 import 'package:movie_buzz/model/movie_details.dart';
 import 'package:movie_buzz/model/movie_model.dart';
 import 'package:movie_buzz/themes/strings.dart';
-import 'package:movie_buzz/ui/movie_details.dart';
+import 'package:movie_buzz/ui/movie_detail_page/movie_details.dart';
 
 
 class LoadedWidget extends StatelessWidget {
