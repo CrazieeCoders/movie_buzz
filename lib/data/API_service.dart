@@ -8,14 +8,15 @@ import 'package:movie_buzz/model/error_model.dart';
 import 'package:movie_buzz/model/movie_details.dart';
 import 'package:movie_buzz/model/movie_model.dart';
 import 'package:movie_buzz/model/title_model.dart';
+import 'package:flutter_config/flutter_config.dart';
 
 class APIService{
 
-  static const API_KEY = "71ca53b93cmsh85f028cd23b747ap12f87bjsn74227b5a53c0";
-  static const String _baseUrl = "rapidapi.p.rapidapi.com";
+  static String API_KEY = FlutterConfig.get('API_KEY');
+  static String _baseUrl = 'rapidapi.p.rapidapi.com';
   static const String endpoint = '/';
 
-  static const Map<String,String> _headers ={
+  static  Map<String,String> _headers ={
     "content-type": "application/json",
     "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
     "x-rapidapi-key": API_KEY,
