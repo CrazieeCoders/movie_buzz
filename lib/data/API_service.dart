@@ -35,14 +35,12 @@ class APIService{
     try {
       final response = await http.get(uri, headers: _headers);
       responseJson = _returnResponse(response);
-      print('$responseJson');
+
 
       final title = getTitleFromJson(responseJson);
 
-      print('Title:${title.response}');
-      if(title.response=="False"){
-        print('${title.response}');
-      }
+
+
       return title.search;
 
     }on SocketException {
@@ -62,10 +60,8 @@ class APIService{
 
     if(response.statusCode == 200){
       MovieDetails movieDetails = getMovieDetailsFromJson(response.body);
-      print('${response.body}');
       return movieDetails;
     }else{
-      print("error");
       return null;
     }
 
@@ -79,10 +75,10 @@ class APIService{
 
      switch(response.statusCode){
         case 200:
-          print("The response in switch Case:${response.body}");
           var error = ErrorMovie.fromJson(jsonDecode(response.body));
 
           if(error.response == "False"){
+
             throw MovieNotFoundException(error.error);
           }else {
             return response.body;

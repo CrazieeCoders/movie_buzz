@@ -1,22 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_buzz/themes/strings.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: LoadingPage(),
-    );
-  }
-}
+import 'package:movie_buzz/themes/images.dart';
+import 'package:movie_buzz/themes/style.dart';
 
 
 class LoadingPage extends StatefulWidget {
@@ -75,18 +59,14 @@ class _LoadingPageState extends State<LoadingPage> with SingleTickerProviderStat
               child: Container(
                   height:75.0,
                   width: 75.0,
-                  child: Image.asset(Style.loading_Img)),
+                  child: Image.asset(Images.loading_Img)),
             ),
           ),
           SizedBox(
             height: 60.0,
           ),
           Center(child: Text('loading movies....',
-          style: TextStyle(
-            fontFamily: 'Montserrat',
-            fontSize: 24.0,
-            fontWeight: FontWeight.bold
-          ),))
+          style: Style.movieLoadingTextStyle,))
         ],
       ),
     );

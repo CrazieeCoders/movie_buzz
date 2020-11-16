@@ -51,7 +51,7 @@ class MovieDetails{
      rated: parsedJson['Rated'],
      writer: parsedJson['Writer'],
      country:parsedJson['Country'],
-     awards: parsedJson['awards'],
+     awards: parsedJson['Awards'],
      metaScore: parsedJson['Metascore'],
      imdbRating: parsedJson['imdbRating'],
      imdbVotes: parsedJson['imdbVotes'],

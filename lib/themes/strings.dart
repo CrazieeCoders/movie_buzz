@@ -1,7 +1,16 @@
-class Style{
+class Strings{
 
-  Style._();
+  Strings._();
 
-  static const String placeholder_Img = 'assets/images/movie_placeholder.jpg';
-  static const String loading_Img = 'assets/images/movie_loading.jpg';
+  //First page - initial page
+  static const String hintText = 'search by movie name';
+  static const String buttonText = 'Search Movies';
+
+  //Second page - loaded page
+  static const String appTitle = 'Movies';
+
+  static const String description= '''  identify movies,tv series,music albums, and many more....\n
+  get Title, Year, Metascore Rating, IMDB rating, Release date, Runtime, Genre, Directors, Writers, Actors, Plot, Awards, Posters & tons of other data
+  ''';
+
 }

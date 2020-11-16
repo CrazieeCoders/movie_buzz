@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_buzz/bloc/movie_bloc.dart';
 import 'package:movie_buzz/bloc/movie_events.dart';
+import 'package:movie_buzz/themes/size_config.dart';
+import 'package:movie_buzz/themes/strings.dart';
+import 'package:movie_buzz/themes/style.dart';
 
 
 class InitialWidget extends StatefulWidget {
@@ -55,46 +58,46 @@ class _InitialWidgetState extends State<InitialWidget> with SingleTickerProvider
   Widget build(BuildContext context) {
     movieBloc = BlocProvider.of<MovieBloc>(context);
     return Scaffold(
-      backgroundColor: Colors.orange.withOpacity(0.5),
+      backgroundColor: Style.appBackgroundColor.withOpacity(0.5),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           SizedBox(
-            height: 40.0,
+            height: 4.87 * SizeConfig.heightMultiplier,
           ),
           Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40.0),
-              color: Colors.orange.withOpacity(0.5)
+              color: Style.appBackgroundColor.withOpacity(0.5)
             ),
             child: Column(
               children: <Widget>[
+                SizedBox(
+                  height: 3.65 * SizeConfig.heightMultiplier,
+                ),
                 Padding(
-                  padding: const EdgeInsets.only(top:30.0),
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Material(
-                      borderRadius: BorderRadius.circular(15.0),
-                      color: Colors.white.withOpacity(0.9),
-                      elevation: 0.0,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left:12.0),
-                        child: TextField(
-                          controller: _searchMovie,
-                          decoration: InputDecoration(
-                            hintText: 'search by movie name',
-                            hintStyle: TextStyle(
-                                fontFamily: 'Montserrat'
-                            ),
-                            border: InputBorder.none,
-                            suffixIcon: ScaleTransition(
-                              scale: _searchAnim,
-                              child: Icon(Icons.search,
-                                color: Colors.deepOrange,
-                                size: 45.0,),
-                            ),
-
+                  padding: const EdgeInsets.all(12.0),
+                  child: Material(
+                    borderRadius: BorderRadius.circular(15.0),
+                    color: Colors.white.withOpacity(0.9),
+                    elevation: 0.0,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left:12.0),
+                      child: TextField(
+                        autocorrect: false,
+                        style: Style.textStyle,
+                        controller: _searchMovie,
+                        decoration: InputDecoration(
+                          hintText: Strings.hintText,
+                          hintStyle: Style.hintStyle,
+                          border: InputBorder.none,
+                          suffixIcon: ScaleTransition(
+                            scale: _searchAnim,
+                            child: Icon(Icons.search,
+                              color: Style.searchIconColor,
+                              size: 5.4 * SizeConfig.heightMultiplier,),
                           ),
+
                         ),
                       ),
                     ),
@@ -102,7 +105,7 @@ class _InitialWidgetState extends State<InitialWidget> with SingleTickerProvider
                 ),
 
                 SizedBox(
-                  height: 20,
+                  height: 2.4 * SizeConfig.heightMultiplier,
                 ),
 
                 Padding(
@@ -117,12 +120,9 @@ class _InitialWidgetState extends State<InitialWidget> with SingleTickerProvider
                         _searchMovie.clear();
                       }
                     },
-                    color: Colors.grey,
-                    child: Text("Search Movies",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Montserrat'
-                      ),),
+                    color: Style.buttonColor,
+                    child: Text(Strings.buttonText,
+                      style: Style.buttonTextStyle),
                   ),
                 ),
 
@@ -130,30 +130,23 @@ class _InitialWidgetState extends State<InitialWidget> with SingleTickerProvider
             ),
           ),
           SizedBox(
-            height: 80,
+            height: 9.75 * SizeConfig.heightMultiplier,
           ),
 
           Visibility(
             visible: widget.errorMsg == null,
             child: Padding(
               padding: const EdgeInsets.only(left:18.0,right: 18.0),
-              child: Text('Identify movies,tv series,ratings,director,cast,runtime and many more....',
-                style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    fontSize: 16.0,
-                    color: Colors.grey,
-                    fontStyle: FontStyle.italic
-                ),),
+              child: Text(
+                Strings.description,
+                style: Style.descTextStyle),
             ),
           ),
 
           Visibility (
             visible: widget.errorMsg != null,
-            child:Center(child: Text('$widget.errorMsg',
-              style: TextStyle(
-                  fontFamily: 'Montserrat',
-                  fontSize: 20.0
-              ),)) ,
+            child:Center(child: Text('${widget.errorMsg}',
+              style:Style.movieErrorTextStyle,)) ,
           ),
 
         ],

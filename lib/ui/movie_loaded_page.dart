@@ -5,7 +5,10 @@ import 'package:movie_buzz/bloc/movie_events.dart';
 import 'package:movie_buzz/data/API_service.dart';
 import 'package:movie_buzz/model/movie_details.dart';
 import 'package:movie_buzz/model/movie_model.dart';
+import 'package:movie_buzz/themes/images.dart';
+import 'package:movie_buzz/themes/size_config.dart';
 import 'package:movie_buzz/themes/strings.dart';
+import 'package:movie_buzz/themes/style.dart';
 import 'package:movie_buzz/ui/movie_detail_page/movie_details.dart';
 
 
@@ -13,7 +16,6 @@ class LoadedWidget extends StatelessWidget {
 
   List<Movie> movieList;
   MovieBloc movieBloc;
-  //needs to be removed
   APIService _apiService = APIService();
   MovieDetails _movieDetails;
 
@@ -27,17 +29,14 @@ class LoadedWidget extends StatelessWidget {
         elevation: 0.0,
         backgroundColor: Colors.orange.withOpacity(0.5),
         centerTitle: true,
-        title: Text('Movies',
-        style: TextStyle(
-          fontFamily: 'Montserrat',
-          color: Colors.blueGrey,
-        ),),
+        title: Text(Strings.appTitle,
+        style: Style.appTitleTextStyle,),
         leading: GestureDetector(
             onTap: (){
               movieBloc.add(ResetEvent());
             },
             child: Icon(Icons.arrow_back_ios,
-            size: 35.0,
+            size: 4.26 * SizeConfig.heightMultiplier,
             color: Colors.blueGrey,),),
       ),
       body: Container(
@@ -59,7 +58,7 @@ class LoadedWidget extends StatelessWidget {
       child: ListTile(
         onTap: ()async{
 
-          // code chnages have to be made
+          // code changes have to be made
 
           _movieDetails =  await _apiService.getMovieDetails(imdbID: movie.imdbID);
 
@@ -68,19 +67,18 @@ class LoadedWidget extends StatelessWidget {
           ));
         },
         title: Text(movie.title,
-        style: TextStyle(
-          fontFamily: 'Montserrat',
-        ),),
+        style: Style.movieTitleStyle),
         subtitle: Text(movie.year,
-        style: TextStyle(
-          fontFamily: 'Montserrat',
-        ),),
+        style: Style.movieSubTitleStyle),
         dense: false,
         leading: FadeInImage.assetNetwork(
-          placeholder:Style.placeholder_Img,
+          placeholder:Images.placeholder_Img,
           image:movie.url,
-          width: 50,
+          width: 12.16 * SizeConfig.widthMultiplier,
         ),
+      ),
+      shape: StadiumBorder(
+        side: BorderSide(color: Colors.orange.withOpacity(0.5),width: 1),
       ),
     );
   }
