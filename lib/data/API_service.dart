@@ -8,11 +8,12 @@ import 'package:movie_buzz/model/error_model.dart';
 import 'package:movie_buzz/model/movie_details.dart';
 import 'package:movie_buzz/model/movie_model.dart';
 import 'package:movie_buzz/model/title_model.dart';
-import 'package:flutter_config/flutter_config.dart';
+
 
 class APIService{
 
-  static String API_KEY = FlutterConfig.get('API_KEY');
+  //static String API_KEY = '1ca53b93cmsh85f028cd23b747ap12f87bjsn74227b5a53c0';
+  static String API_KEY = '71ca53b93cmsh85f028cd23b747ap12f87bjsn74227b5a53c0';
   static String _baseUrl = 'rapidapi.p.rapidapi.com';
   static const String endpoint = '/';
 
@@ -65,8 +66,6 @@ class APIService{
     }else{
       return null;
     }
-
-
   }
 
 

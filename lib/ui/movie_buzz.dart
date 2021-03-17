@@ -145,8 +145,11 @@ class _InitialWidgetState extends State<InitialWidget> with SingleTickerProvider
 
           Visibility (
             visible: widget.errorMsg != null,
-            child:Center(child: Text('${widget.errorMsg}',
-              style:Style.movieErrorTextStyle,)) ,
+            child:Center(child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text('${widget.errorMsg}',
+                style:Style.movieErrorTextStyle,),
+            )) ,
           ),
 
         ],
